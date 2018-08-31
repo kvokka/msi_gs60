@@ -1,0 +1,4 @@
+dpkg -i linux-firmware_1.169.3_all.deb
+cp firmware-6.bin_WLAN.RM.4.4.1-00065-QCARMSWP-1    /lib/firmware/ath10k/QCA6174/hw3.0/firmware-6.bin 
+cp board-2.bin /lib/firmware/ath10k/QCA6174/hw3.0/board-2.bin 
+

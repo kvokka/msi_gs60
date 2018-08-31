@@ -1,0 +1,1 @@
+hdparm -S 36 /dev/sda1

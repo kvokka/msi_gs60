@@ -1,0 +1,5 @@
+# set settings for night light
+gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 4100
+gsettings set org.gnome.settings-daemon.plugins.color night-light-last-coordinates '(41.549999999999997, -8.4000000000000004)'
+
+

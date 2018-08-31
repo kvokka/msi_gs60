@@ -1,0 +1,7 @@
+# set default output to headphones
+# get list of sources you can with `pacmd list-cards`
+
+echo "set-card-profile 0 output:iec958-stereo+input:analog-stereo" >>>/etc/pulse/default.pa
+echo "set-default-sink 0" >>>/etc/pulse/default.pa
+
+copy ./96sound_selection_fix /usr/lib/pm-utils/sleep.d/

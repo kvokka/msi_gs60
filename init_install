@@ -1,0 +1,124 @@
+sudo apt update && sudo apt install curl wget apt-transport-https ca-certificates software-properties-common 
+sudo sh -c 'echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list'
+
+
+# add repos
+# google chrome
+sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+
+#gurb customizer
+sudo sh -c 'echo "deb http://ppa.launchpad.net/danielrichter2007/grub-customizer/ubuntu bionic main" > /etc/apt/sources.list.d/gurb-customizer.list'
+
+# nvidia graphics
+sudo sh -c 'echo "deb http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu bionic main" > /etc/apt/sources.list.d/graphics-drivers-ubuntu-ppa-bionic.list'
+
+# sublime
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+
+
+#skype
+curl https://repo.skype.com/data/SKYPE-GPG-KEY | sudo apt-key add -
+dpkg -s apt-transport-https > /dev/null || bash -c "sudo apt-get update; sudo apt-get install apt-transport-https -y"
+sudo sh -c 'echo "deb [arch=amd64] https://repo.skype.com/deb stable main" > /etc/apt/sources.list.d/skypeforlinux.list'
+
+# docker
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+
+# VScode
+
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+
+# Nodejs & yarn
+
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+sudo sh -c 'echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list'
+
+#veracrypt
+sudo add-apt-repository -y ppa:unit193/encryption
+
+sudo apt-get -y install \
+	mc \
+	htop \
+	ncdu \
+	git \
+	bluetooth \
+	lm-sensors \
+	powertop \
+	nvme-cli \
+	hddtemp \
+	apt-show-versions \
+	grub-customizer \
+	build-essential \
+	cmake \
+	libgtkmm-3.0-dev \
+	libssl-dev \
+	libqt4-dev \
+	gnome-tweak-tool \
+	google-chrome-stable \
+	veracrypt \
+	skypeforlinux \
+	chrome-gnome-shell \
+	dconf-editor \
+	git \
+	zlib1g-dev \
+	libreadline-dev \
+	libyaml-dev \
+	libsqlite3-dev \
+	sqlite3 \
+	libxml2-dev \
+	libxslt1-dev \
+	libcurl4-openssl-dev \
+	software-properties-common \
+	libffi-dev \
+	nodejs \
+	yarn \
+	sublime-text \
+	docker-ce \
+	code \
+	python-pip
+
+
+# install ruby
+
+cd
+
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+file='.bashrc'
+line='export PATH="$HOME/.rbenv/bin:$PATH"'
+grep '$line' $file || echo $line >> $file
+eval $line
+
+line='export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"'
+grep '$line' $file || echo $line >> $file
+eval $line
+
+line='eval "$(rbenv init -)"'
+grep '$line' $file || echo $line >> $file
+eval $line
+
+ruby_version=2.5.1
+ruby -v | grep $ruby_version || rbenv install $ruby_version
+rbenv global $ruby_version
+ruby -v
+
+gem install bundler
+
+rbenv rehash
+
+# git setup
+
+git config --global color.ui true
+git config --global user.name "Mike Kvokka"
+git config --global user.email "kvokka@yahoo.com"
+

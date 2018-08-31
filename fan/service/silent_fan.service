@@ -1,0 +1,12 @@
+[Unit]
+Description=Silent fan mode
+
+[Service]
+Type=simple
+ExecStartPre=/bin/sleep 40
+WorkingDirectory=/usr/fan
+ExecStart=/bin/sh run
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
