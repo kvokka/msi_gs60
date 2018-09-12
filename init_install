@@ -123,3 +123,7 @@ git config --global color.ui true
 git config --global user.name "Mike Kvokka"
 git config --global user.email "kvokka@yahoo.com"
 
+# npm packages
+
+npm i -g diff-so-fancy
+
